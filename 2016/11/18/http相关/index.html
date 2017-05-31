@@ -3,14 +3,19 @@
 <head>
   <meta charset="utf-8">
   
-  <title>Tina&#39;s Blog</title>
+  <title>关于http | Tina&#39;s Blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="Tina&#39;s Blog">
-<meta property="og:url" content="https://xiaoxiaoziranjuan.github.io/index.html">
+  <meta name="description" content="解释 http: 超文本传输协议  报文格式请求报文应答报文http 1.0与http 1.1区别 可扩展性   可扩展性的一个重要原则：如果HTTP的某个实现接收到了自身未定义的头域，将自动忽略它。 在消息中增加版本号，用于兼容性判断。注意，版本号只能用来判断逐段（hop-by-hop）的兼容性，而无法判断端到端（end-to-end）的兼容性。例如，一台HTTP/1.1的源服务器从使用HTTP">
+<meta name="keywords" content="http">
+<meta property="og:type" content="article">
+<meta property="og:title" content="关于http">
+<meta property="og:url" content="https://xiaoxiaoziranjuan.github.io/2016/11/18/http相关/index.html">
 <meta property="og:site_name" content="Tina&#39;s Blog">
+<meta property="og:description" content="解释 http: 超文本传输协议  报文格式请求报文应答报文http 1.0与http 1.1区别 可扩展性   可扩展性的一个重要原则：如果HTTP的某个实现接收到了自身未定义的头域，将自动忽略它。 在消息中增加版本号，用于兼容性判断。注意，版本号只能用来判断逐段（hop-by-hop）的兼容性，而无法判断端到端（end-to-end）的兼容性。例如，一台HTTP/1.1的源服务器从使用HTTP">
+<meta property="og:updated_time" content="2017-05-31T03:03:30.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Tina&#39;s Blog">
+<meta name="twitter:title" content="关于http">
+<meta name="twitter:description" content="解释 http: 超文本传输协议  报文格式请求报文应答报文http 1.0与http 1.1区别 可扩展性   可扩展性的一个重要原则：如果HTTP的某个实现接收到了自身未定义的头域，将自动忽略它。 在消息中增加版本号，用于兼容性判断。注意，版本号只能用来判断逐段（hop-by-hop）的兼容性，而无法判断端到端（end-to-end）的兼容性。例如，一台HTTP/1.1的源服务器从使用HTTP">
   
     <link rel="alternate" href="/atom.xml" title="Tina&#39;s Blog" type="application/atom+xml">
   
@@ -59,54 +64,7 @@
   </div>
 </header>
       <div class="outer">
-        <section id="main">
-  
-    <article id="post-hello-world" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2017/05/31/hello-world/" class="article-date">
-  <time datetime="2017-05-31T02:14:36.000Z" itemprop="datePublished">2017-05-31</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/05/31/hello-world/">Hello World</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>Welcome to <a href="https://hexo.io/" target="_blank" rel="external">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="external">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="external">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="external">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo new <span class="string">"My New Post"</span></div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="external">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo server</div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="external">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo generate</div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="external">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo deploy</div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="external">Deployment</a></p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://xiaoxiaoziranjuan.github.io/2017/05/31/hello-world/" data-id="cj3cer16a000019p6594ku2ih" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-http相关" class="article article-type-post" itemscope itemprop="blogPost">
+        <section id="main"><article id="post-http相关" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2016/11/18/http相关/" class="article-date">
   <time datetime="2016-11-18T03:57:15.000Z" itemprop="datePublished">2016-11-18</time>
@@ -119,8 +77,8 @@
       <header class="article-header">
         
   
-    <h1 itemprop="name">
-      <a class="article-title" href="/2016/11/18/http相关/">关于http</a>
+    <h1 class="article-title" itemprop="name">
+      关于http
     </h1>
   
 
@@ -215,10 +173,23 @@
     </footer>
   </div>
   
-</article>
-
+    
+<nav id="article-nav">
+  
+    <a href="/2017/05/31/hello-world/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          Hello World
+        
+      </div>
+    </a>
+  
+  
+</nav>
 
   
+</article>
 
 </section>
         
