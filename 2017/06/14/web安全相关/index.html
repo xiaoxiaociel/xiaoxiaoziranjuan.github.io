@@ -8,13 +8,17 @@
   <link rel="dns-prefetch" href="https://xiaoxiaoziranjuan.github.io">
   <title>web安全相关 | Tina&#39;s Blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="article">
+  <meta name="description" content="XSS：跨站漏洞 定义：通过恶意攻击者往Web页面插入恶意Js代码，当用户浏览，嵌入的代码会被执行，到达恶意攻击用户控制浏览器的目的。 后果：盗取账户、控制浏览器行为、XSS蠕虫 类型 反射型 攻击者将跨站代码写在链接中，受害者请求这种链接时，跨站代码经过服务端反射回来触发，此类代码不会存储到服务端。   存储型 攻击者将恶意数据存储到服务端的数据库中，服务器脚本从数据库中获取该数据后，没有进行安">
+<meta name="keywords" content="web安全">
+<meta property="og:type" content="article">
 <meta property="og:title" content="web安全相关">
 <meta property="og:url" content="https://xiaoxiaoziranjuan.github.io/2017/06/14/web安全相关/index.html">
 <meta property="og:site_name" content="Tina&#39;s Blog">
-<meta property="og:updated_time" content="2017-06-14T02:41:07.000Z">
+<meta property="og:description" content="XSS：跨站漏洞 定义：通过恶意攻击者往Web页面插入恶意Js代码，当用户浏览，嵌入的代码会被执行，到达恶意攻击用户控制浏览器的目的。 后果：盗取账户、控制浏览器行为、XSS蠕虫 类型 反射型 攻击者将跨站代码写在链接中，受害者请求这种链接时，跨站代码经过服务端反射回来触发，此类代码不会存储到服务端。   存储型 攻击者将恶意数据存储到服务端的数据库中，服务器脚本从数据库中获取该数据后，没有进行安">
+<meta property="og:updated_time" content="2017-06-14T02:43:09.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="web安全相关">
+<meta name="twitter:description" content="XSS：跨站漏洞 定义：通过恶意攻击者往Web页面插入恶意Js代码，当用户浏览，嵌入的代码会被执行，到达恶意攻击用户控制浏览器的目的。 后果：盗取账户、控制浏览器行为、XSS蠕虫 类型 反射型 攻击者将跨站代码写在链接中，受害者请求这种链接时，跨站代码经过服务端反射回来触发，此类代码不会存储到服务端。   存储型 攻击者将恶意数据存储到服务端的数据库中，服务器脚本从数据库中获取该数据后，没有进行安">
   
     <link rel="alternative" href="/atom.xml" title="Tina&#39;s Blog" type="application/atom+xml">
   
@@ -170,7 +174,95 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        
+        <h2 id="XSS：跨站漏洞"><a href="#XSS：跨站漏洞" class="headerlink" title="XSS：跨站漏洞"></a>XSS：跨站漏洞</h2><ul>
+<li>定义：通过恶意攻击者往Web页面插入恶意Js代码，当用户浏览，嵌入的代码会被执行，到达恶意攻击用户控制浏览器的目的。</li>
+<li>后果：盗取账户、控制浏览器行为、XSS蠕虫</li>
+<li>类型<ul>
+<li>反射型<ul>
+<li>攻击者将跨站代码写在链接中，受害者请求这种链接时，跨站代码经过服务端反射回来触发，此类代码不会存储到服务端。</li>
+</ul>
+</li>
+<li>存储型<ul>
+<li>攻击者将恶意数据存储到服务端的数据库中，服务器脚本从数据库中获取该数据后，没有进行安全处理即显示在公开页面上，受害者访问该页面即中招。</li>
+</ul>
+</li>
+<li>DOM型<ul>
+<li>由js脚本动态创建，输出到页面造成的。此类型不需要经过服务器。</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>防御<ul>
+<li>永远不要相信用户的输入：输入过滤，输出转义</li>
+<li>输入：非字符串或有固定值时，事先进行类型/值检查</li>
+<li>输出：进行html转义（如 &lt; 转义为 &lt; ）</li>
+<li>callback参数只允许字母、数字、下划线</li>
+<li>Java项目使用安全包，可使用esapi的过滤</li>
+<li>PHP可参见开发规范<h2 id="业务信息泄露"><a href="#业务信息泄露" class="headerlink" title="业务信息泄露"></a>业务信息泄露</h2></li>
+</ul>
+</li>
+<li>定义：由于业务系统本身不安全的设置，譬如敏感信息可遍历化查询，未做权限校验，导致大量敏感信息泄露，从而造成黑产诈骗，威胁整个生态的安全</li>
+<li>类型与原因<ul>
+<li>姓名，手机号，地址，订单信息，身份证，银行卡，淘宝账号与昵称邮箱，个人图片地址，各业务敏感数据，秘钥</li>
+<li>前后端展示不一致，未权限校验，id未加密可遍历化</li>
+</ul>
+</li>
+<li>后果<ul>
+<li>黑产关联诈骗</li>
+<li>电话销售</li>
+<li>隐私安全</li>
+<li>生产网安全</li>
+</ul>
+</li>
+<li>防御<ul>
+<li>前端与后端敏感数据展示保持一致</li>
+<li>公开展示，页面敏感数据，加<strong>，譬如手机*</strong>1851，id加密，13位以上</li>
+<li>非公开展示，页面敏感数据，加权限校验</li>
+<li>代码禁止明文写key<h2 id="CSRF：跨站请求伪造"><a href="#CSRF：跨站请求伪造" class="headerlink" title="CSRF：跨站请求伪造"></a>CSRF：跨站请求伪造</h2></li>
+</ul>
+</li>
+<li>定义：链接的表单提交的所有请求参数都可被预测，攻击者构造好一个站内URL或在第三方站点放置一个自动提交的表单，当合法用户在登录状态时，攻击者诱使其点击，此时就会在用户不知情的情况下执行了攻击者伪造的请求。</li>
+<li>例子：<a href="http://www.bevuled.com/pay?product=12&amp;amount=100" target="_blank" rel="external">http://www.bevuled.com/pay?product=12&amp;amount=100</a></li>
+<li>后果：用户在不知不觉中执行了增删改操作</li>
+<li>与xss区别：<ul>
+<li>xss：利用站点内的信任用户</li>
+<li>CSRF：通过伪装来自信任用户的请求</li>
+</ul>
+</li>
+<li>防御<ul>
+<li>对所有涉及增删改的操作添加csrftoken，并于服务端验证<ul>
+<li>1.服务端生成csrftoken，放入服务端session，放入前端cookie中；</li>
+<li>2.前端url通过js抓取cookie内容带入到请求head中；</li>
+<li>3.服务端获取head中csrftoken与之前放入的session的做比较</li>
+</ul>
+</li>
+<li>Java项目使用安全包<h2 id="Jsonp劫持：Jsonp劫持漏洞"><a href="#Jsonp劫持：Jsonp劫持漏洞" class="headerlink" title="Jsonp劫持：Jsonp劫持漏洞"></a>Jsonp劫持：Jsonp劫持漏洞</h2></li>
+</ul>
+</li>
+<li>定义：为了解决跨域问题，使用Jsonp方式传输数据，由于数据很难做到权限校验，攻击者可以构造带有该jsonp接口的恶意页面，发给用户点击，从而用户的敏感数据通过jsonp接口传输到攻击者的服务器上。</li>
+<li><p>举例：</p>
+<ul>
+<li>编写一个恶意html ：<a href="http://www.hacker.com/evil.html：" target="_blank" rel="external">http://www.hacker.com/evil.html：</a><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"> &lt;html&gt;</div><div class="line">&lt;script src=“http://start.hi.xx.com/dre&amp;callback=aaa”/ &gt;</div><div class="line">  function aaa(data)&#123; 将data发送到我的后台服务器； &#125;</div><div class="line">&lt;/script&gt;</div><div class="line">&lt;<span class="regexp">/html&gt;</span></div></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+<li><p>防御</p>
+<ul>
+<li>敏感数据尽量不要采用JSONP跨域传输。</li>
+<li>如果需要，JSONP接口的后端需要对referer进行校验，只允许受信任的调用方域名的页面里嵌入我们的JSONP</li>
+<li>域名是否受信任，可使用安全包的URL白名单校验函数检查</li>
+</ul>
+</li>
+</ul>
+<h2 id="SQL注入"><a href="#SQL注入" class="headerlink" title="SQL注入"></a>SQL注入</h2><ul>
+<li>定义：当数据库语句采用拼接的方式编写时，如果外部输入参数在拼接时，没有和数据库语句做严格的区分，将导致恶意攻击者可以注入自定义的数据库语句，导致攻击者可以读取人意数据库数据</li>
+<li>防御：<ul>
+<li>编写的SQL必须预编译，不允许通过字符串拼接的方式合成</li>
+<li>部分特殊场景，必须通过拼接合成，则拼接的变量必须经过处理，只允许[a-zA-Z0-9_-.]＋字符<h2 id="权限校验：水平垂直于未授权访问"><a href="#权限校验：水平垂直于未授权访问" class="headerlink" title="权限校验：水平垂直于未授权访问"></a>权限校验：水平垂直于未授权访问</h2><h2 id="登录安全：登录安全设计"><a href="#登录安全：登录安全设计" class="headerlink" title="登录安全：登录安全设计"></a>登录安全：登录安全设计</h2><h2 id="文件上传和下载"><a href="#文件上传和下载" class="headerlink" title="文件上传和下载"></a>文件上传和下载</h2><h2 id="错误配置"><a href="#错误配置" class="headerlink" title="错误配置"></a>错误配置</h2><h2 id="敏感信息泄露"><a href="#敏感信息泄露" class="headerlink" title="敏感信息泄露"></a>敏感信息泄露</h2></li>
+</ul>
+</li>
+</ul>
+
       
 
       
@@ -199,6 +291,17 @@
     <div class="article-info article-info-index">
       
       
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">web安全</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
       
 
       
@@ -374,6 +477,10 @@ return o(t,i(n),arguments.length<3?void 0:u(arguments[2]))}})},function(t,n,r){v
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">http</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">web安全</a>
               </li>
             
             <div class="clearfix"></div>
